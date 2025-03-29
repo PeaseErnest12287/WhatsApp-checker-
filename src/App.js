@@ -120,13 +120,29 @@ function App() {
         <button onClick={() => fileInputRef.current.click()}>Upload VCF File</button>
         <p>Supports standard vCard files</p>
       </div>
+      
       {statusMessage && <div className="status-message">{statusMessage}</div>}
+
+      {contacts.length > 0 && (
+        <div className="scan-section">
+          <p>Contacts to scan: {contacts.length}</p>
+          <button 
+            onClick={startGhostScan} 
+            disabled={isProcessing}
+            className={isProcessing ? 'scanning' : ''}
+          >
+            {isProcessing ? 'Scanning...' : 'Start WhatsApp Scan'}
+          </button>
+        </div>
+      )}
+
       {validContacts.length > 0 && (
         <div className="results-section">
           <h2>WhatsApp Contacts Found: <span className="valid-count">{validContacts.length}</span></h2>
           <button onClick={exportValidContacts} className="export-btn">Export WhatsApp Contacts</button>
         </div>
       )}
+
       <div className="branding">
         <div className="logo">ERNEST TECH HOUSE</div>
         <div className="programmer">Programmed by Peace Ernest</div>

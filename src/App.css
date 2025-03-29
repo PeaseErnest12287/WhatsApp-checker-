@@ -1,39 +1,49 @@
-/* Ernest Tech House - WhatsApp VCF Ghost Scanner */
-/* Designed by Peace Ernest */
+/* === Ernest Tech House Super Styling === */
+/* Designed with ❤️ by Peace Ernest */
+
 :root {
-  --primary: #25D366; /* WhatsApp green */
-  --secondary: #128C7E; /* WhatsApp teal */
-  --accent: #075E54; /* WhatsApp dark green */
-  --light: #DCF8C6; /* WhatsApp light green */
-  --dark: #1a1a1a;
-  --text: #333;
-  --text-light: #f5f5f5;
-  --error: #ff4444;
-  --warning: #ffbb33;
-  --success: #00C851;
+  --whatsapp-green: #25D366;
+  --whatsapp-teal: #128C7E;
+  --whatsapp-dark: #075E54;
+  --whatsapp-light: #DCF8C6;
+  --neon-blue: #00f2ff;
+  --neon-pink: #ff00e4;
+  --dark-bg: #0f0f12;
+  --card-bg: #1a1a1f;
+  --text-light: #f0f0f0;
+  --text-dim: #b0b0b0;
 }
 
+/* === Base Styles === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+  background: var(--dark-bg);
+  color: var(--text-light);
   min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(37, 211, 102, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.1) 0%, transparent 20%);
 }
 
+/* === App Container === */
 .app {
   max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
-  background: white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: rgba(15, 15, 18, 0.8);
   border-radius: 20px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  box-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(37, 211, 102, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: hidden;
 }
@@ -44,15 +54,29 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 10px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  height: 4px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--whatsapp-green), var(--neon-pink));
+  animation: rainbow 8s linear infinite;
+  background-size: 400% 400%;
 }
 
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Header === */
 h1 {
-  color: var(--accent);
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--whatsapp-green), var(--neon-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(37, 211, 102, 0.3);
   position: relative;
   padding-bottom: 1rem;
 }
@@ -63,287 +87,287 @@ h1::after {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  border-radius: 2px;
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--whatsapp-green), var(--neon-blue));
+  border-radius: 3px;
 }
 
+/* === Upload Section === */
 .upload-section {
   text-align: center;
-  padding: 2rem;
-  border: 2px dashed #ccc;
+  padding: 2.5rem;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   margin-bottom: 2rem;
   transition: all 0.3s ease;
-  background: rgba(220, 248, 198, 0.2);
-}
-
-.upload-section:hover {
-  border-color: var(--primary);
-  background: rgba(220, 248, 198, 0.3);
-}
-
-.upload-section button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-}
-
-.upload-section button:hover {
-  background: var(--secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-}
-
-.upload-section p {
-  margin-top: 1rem;
-  color: var(--text);
-  font-size: 0.9rem;
-}
-
-.status-message {
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  font-weight: 500;
-  text-align: center;
-  border-left: 4px solid var(--primary);
-}
-
-.contacts-info {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 15px;
-  margin-bottom: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  text-align: center;
-}
-
-.contacts-info p {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  color: var(--text);
-}
-
-.contacts-info button {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-}
-
-.contacts-info button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-}
-
-.contacts-info button:disabled {
-  background: #ccc;
-  transform: none;
-  box-shadow: none;
-  cursor: not-allowed;
-}
-
-.scanning-section {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  margin-bottom: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.progress-container {
-  margin-bottom: 1.5rem;
-}
-
-.progress-bar {
-  height: 12px;
-  background: #f0f0f0;
-  border-radius: 6px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  border-radius: 6px;
-  transition: width 0.5s ease;
+  background: rgba(30, 30, 35, 0.5);
   position: relative;
   overflow: hidden;
 }
 
-.progress-fill::after {
+.upload-section:hover {
+  border-color: var(--whatsapp-green);
+  background: rgba(37, 211, 102, 0.05);
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.2);
+}
+
+.upload-section button {
+  background: linear-gradient(135deg, var(--whatsapp-green), var(--whatsapp-teal));
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 15px rgba(37, 211, 102, 0.3),
+    0 0 10px rgba(37, 211, 102, 0.2) inset;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.upload-section button::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  animation: shimmer 2s infinite;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--whatsapp-teal), var(--whatsapp-dark));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+.upload-section button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 6px 20px rgba(37, 211, 102, 0.4),
+    0 0 15px rgba(37, 211, 102, 0.3) inset;
 }
 
-.progress-container span {
-  display: block;
-  text-align: center;
-  font-weight: 600;
-  color: var(--text);
+.upload-section button:hover::before {
+  opacity: 1;
 }
 
-.number-display {
-  background: var(--dark);
-  padding: 1.5rem;
-  border-radius: 10px;
-  text-align: center;
+.upload-section button:active {
+  transform: translateY(1px);
 }
 
-.typing-animation {
-  font-family: 'Courier New', monospace;
-  font-size: 1.5rem;
-  color: var(--light);
-  display: inline-block;
-  position: relative;
+.upload-section p {
+  margin-top: 1rem;
+  color: var(--text-dim);
+  font-size: 0.95rem;
 }
 
-.cursor {
-  animation: blink 0.7s infinite;
-  color: var(--light);
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.results-section {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  margin-top: 2rem;
-}
-
-.results-section h2 {
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-.valid-count {
-  color: var(--primary);
-  font-weight: 700;
-  margin-left: 0.5rem;
-}
-
-.preview-list {
-  max-height: 300px;
-  overflow-y: auto;
+/* === Status Message === */
+.status-message {
+  padding: 1.2rem;
   margin: 1.5rem 0;
-  padding: 1rem;
-  background: rgba(220, 248, 198, 0.2);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.contact-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.8rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
-}
-
-.contact-item:hover {
-  background: rgba(220, 248, 198, 0.3);
-}
-
-.contact-name {
-  font-weight: 600;
-  color: var(--text);
-}
-
-.contact-number {
-  color: var(--secondary);
-  font-family: monospace;
-}
-
-.more-contacts {
-  padding: 0.8rem;
+  border-radius: 12px;
+  background: rgba(30, 30, 35, 0.7);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
   text-align: center;
-  color: #666;
-  font-style: italic;
+  border-left: 4px solid var(--whatsapp-green);
+  animation: pulse 2s infinite alternate;
 }
 
-.export-btn {
-  background: linear-gradient(135deg, var(--secondary), var(--accent));
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 10px rgba(37, 211, 102, 0.3); }
+}
+
+/* === Scan Section === */
+.scan-section {
+  background: var(--card-bg);
+  padding: 1.8rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.scan-section p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+.scan-section button {
+  background: linear-gradient(135deg, var(--whatsapp-green), var(--neon-blue));
   color: white;
   border: none;
   padding: 12px 30px;
   border-radius: 50px;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 15px rgba(0, 242, 255, 0.3),
+    0 0 10px rgba(37, 211, 102, 0.2) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-section button.scanning {
+  background: linear-gradient(135deg, var(--whatsapp-teal), var(--whatsapp-dark));
+  animation: scanning 1.5s infinite;
+}
+
+@keyframes scanning {
+  0% { box-shadow: 0 0 5px var(--whatsapp-green); }
+  50% { box-shadow: 0 0 20px var(--whatsapp-green); }
+  100% { box-shadow: 0 0 5px var(--whatsapp-green); }
+}
+
+.scan-section button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 6px 25px rgba(0, 242, 255, 0.4),
+    0 0 15px rgba(37, 211, 102, 0.3) inset;
+}
+
+.scan-section button:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* === Results Section === */
+.results-section {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  margin-top: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.results-section h2 {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.valid-count {
+  color: var(--whatsapp-green);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
+}
+
+.export-btn {
+  background: linear-gradient(135deg, var(--whatsapp-teal), var(--whatsapp-dark));
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: block;
   margin: 0 auto;
-  box-shadow: 0 4px 15px rgba(18, 140, 126, 0.3);
+  box-shadow: 
+    0 4px 15px rgba(18, 140, 126, 0.3),
+    0 0 10px rgba(7, 94, 84, 0.2) inset;
+  position: relative;
+  overflow: hidden;
 }
 
 .export-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(18, 140, 126, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 6px 25px rgba(18, 140, 126, 0.4),
+    0 0 15px rgba(7, 94, 84, 0.3) inset;
+  background: linear-gradient(135deg, var(--whatsapp-dark), var(--whatsapp-teal));
 }
 
-/* Footer with branding */
-.footer {
+.export-btn:active {
+  transform: translateY(1px);
+}
+
+/* === Branding Section === */
+.branding {
   text-align: center;
   margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  color: var(--text);
-  font-size: 0.9rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-dim);
+  animation: fadeIn 0.8s ease-out;
 }
 
-.footer a {
-  color: var(--secondary);
+.logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--whatsapp-green);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(37, 211, 102, 0.3);
+}
+
+.programmer {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  color: white;
+  background: linear-gradient(135deg, var(--whatsapp-green), var(--whatsapp-teal));
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
   text-decoration: none;
-  transition: all 0.2s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.footer a:hover {
-  color: var(--primary);
-  text-decoration: underline;
+.social-link:hover {
+  background: linear-gradient(135deg, var(--whatsapp-teal), var(--whatsapp-dark));
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
 }
 
-/* Responsive design */
+.social-link::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* === Responsive Design === */
 @media (max-width: 768px) {
   .app {
     padding: 1.5rem;
@@ -352,51 +376,43 @@ h1::after {
   }
   
   h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   
-  .upload-section, .contacts-info, .scanning-section, .results-section {
-    padding: 1.2rem;
+  .upload-section, .scan-section, .results-section {
+    padding: 1.5rem;
+  }
+  
+  .social-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .social-link {
+    justify-content: center;
   }
 }
 
-/* Ernest Tech House branding */
-.branding {
-  text-align: center;
-  margin-top: 2rem;
-  color: var(--text);
+/* === Special Effects === */
+.glow {
+  text-shadow: 0 0 10px var(--whatsapp-green);
 }
 
-.branding .logo {
-  font-weight: 700;
-  color: var(--secondary);
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+/* === Scrollbar === */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.branding .programmer {
-  font-style: italic;
-  margin-bottom: 1rem;
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+::-webkit-scrollbar-thumb {
+  background: var(--whatsapp-green);
+  border-radius: 10px;
 }
 
-.social-link {
-  color: white;
-  background: var(--primary);
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.social-link:hover {
-  background: var(--accent);
-  transform: translateY(-2px);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--whatsapp-teal);
 }
